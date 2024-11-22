@@ -14,7 +14,7 @@ int main()
             cout << srg << endl;
         }
         filestream.close();
-        }
+    }
     else
     {
         cout << "File opening is fali." << endl;
