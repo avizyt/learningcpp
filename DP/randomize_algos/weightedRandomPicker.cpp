@@ -1,3 +1,9 @@
+/*Question 6.9 (ADM)
+Given an array w of positive integers, where w[i] describes the weight of
+index i, propose an algorithm that randomly picks an index in proportion to its
+weight
+*/
+
 #include <iostream>
 #include <vector>
 #include <cstdlib>
