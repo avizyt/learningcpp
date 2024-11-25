@@ -4,6 +4,54 @@
 
 using namespace std;
 
+/*
+Union-Find Data Structure
+The Union-Find (Disjoint-Set Union) data structure is used to:
+
+1. Track connected components of the graph.
+2. Efficiently detect cycles while adding edges.
+Key Operations
+1. Find: Determines the root (or parent) of a node.
+    - Path compression is applied to speed up future operations.
+3. Union: Combines two components into one.
+    - Union by rank or size ensures the tree remains balanced.
+
+INPUT:
+4 5
+1 2 3
+1 3 1
+2 3 2
+3 4 4
+2 4 6
+
+Nodes: 1,2,3,4
+Edges:
+(1,2)->3
+(1,3)->1
+(2,3)->2
+(3,4)->4
+(2,4)->6
+
+     (3)
+   1 ------- 2
+    \       / \
+     \(1)  /   \(6)
+      \   /     \
+       3 ------- 4
+         \(4)
+
+OUTPUT:
+MST Cost: 7
+MST Edges:
+1 - 3 (Weight: 1)
+2 - 3 (Weight: 2)
+3 - 4 (Weight: 4)
+
+Explanation:
+See Exp_kruskal.md
+
+*/
+
 struct Edge
 {
     int u, v, weight;

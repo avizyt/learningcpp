@@ -1,6 +1,32 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+/*
+
+
+INPUT
+Nodes: 1,2,3
+Edges:
+(1,2)->3
+(1,3)->1
+(2,3)->2
+
+
+       (3)
+   1 ------- 2
+    \       /
+     \(1)  /(2)
+      \   /
+       3
+
+OUTPUT
+Edge: (1, 3), Weight: 1
+Edge: (2, 3), Weight: 2
+Edge: (1, 2), Weight: 3
+
+Explain:
+The Edges are sorted asecnding to its weights.
+*/
 
 struct Edge
 {
