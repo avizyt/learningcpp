@@ -1,3 +1,9 @@
+/* Question 4.2a (ADM)
+Let S be an unsorted array of n integers. Give an algorithm that finds the
+pair x, y ∈ S that maximizes |x−y|. Your algorithm must run in O(n) worst-case
+time.
+*/
+
 #include <iostream>
 #include <vector>
 #include <climits>
