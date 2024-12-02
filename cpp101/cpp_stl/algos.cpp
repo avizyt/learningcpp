@@ -21,7 +21,10 @@ int main()
     cout << "First Element: " << *itr << " " << endl;
 
     // change iterator to point to the last element
-    itr = numb.end() - 1;
+    itr = numb.end() - 1; 
     cout << "Last Element: " << *itr;
+
+    int b = numb.begin();
+    cout <<"Begin: "<<b<<\n;
     return 0;
 }
