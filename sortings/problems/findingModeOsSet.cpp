@@ -1,3 +1,9 @@
+/*Question 4.5 (ADM)
+The mode of a bag of numbers is the number that occurs most frequently in
+the set. The set {4, 6, 2, 4, 3, 1} has a mode of 4. Give an efficient and correct
+algorithm to compute the mode of a bag of n numbers.
+*/
+
 #include <iostream>
 #include <vector>
 #include <unordered_map> // For hash table
