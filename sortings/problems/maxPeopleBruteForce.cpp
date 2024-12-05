@@ -52,12 +52,27 @@ int maxPeopleOptimized(const vector<int> &entry, const vector<int> &exit)
         if(a.first == b.first) return a.second < b.second;
 
         return a.first < b.first; });
+
+    // sweep through the events
+    int currCount = 0, maxCount = 0, timeOfMax = 0;
+    for (const auto &event : events)
+    {
+        currCount += event.second;
+        if (currCount > maxCount)
+        {
+            maxCount = currCount;
+            timeOfMax = event.first;
+        }
+    }
+    cout << "Maximum count: " << maxCount << " at time " << timeOfMax << endl;
+    return maxCount;
 }
 
 int main()
 {
     vector<int> entry = {1, 2, 9, 5, 5};
     vector<int> exit = {4, 6, 12, 8, 7};
-    maxPeople(entry, exit);
+    // maxPeople(entry, exit);
+    maxPeopleOptimized(entry, exit);
     return 0;
 }
