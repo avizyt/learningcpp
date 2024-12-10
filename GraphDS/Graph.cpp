@@ -98,6 +98,39 @@ struct Graph
             std::cout << std::endl;
         }
     }
+
+    /* Graph Traversal Algorithms
+
+    1. Depth First Search : Use Stack or Recursion
+        - For Finding Path
+    2. Breadth First Search : Use Queue
+        - For Shortest Path
+    */
+
+    // DFS
+    void dfsHelper(int v, vector<bool> &visited) const
+    {
+        visited[v] = true;
+        cout << v << " ";
+
+        EdgeNode *current = endgs[v];
+        while (current !nullptr)
+        {
+            if (!visited[current->y])
+            {
+                dfsHelper(current->y, visited);
+            }
+            current = current->next;
+        }
+    }
+
+    void dfs(int start) const
+    {
+        vector<bool> visited(nvertices + 1, false);
+        cout << "DFS Traversal: ";
+        dfsHelper(start, visited);
+        cout << endl;
+    }
 };
 
 int main()
@@ -115,6 +148,8 @@ int main()
     // Printing the graph
     std::cout << "Graph representation:" << std::endl;
     g.printGraph();
+
+    g.dfs(1); // Start DFS from vertex 1
 
     return 0;
 }
