@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 
 using namespace std;
 
@@ -113,8 +114,8 @@ struct Graph
         visited[v] = true;
         cout << v << " ";
 
-        EdgeNode *current = endgs[v];
-        while (current !nullptr)
+        EdgeNode *current = edges[v];
+        while (current != nullptr)
         {
             if (!visited[current->y])
             {
@@ -129,6 +130,37 @@ struct Graph
         vector<bool> visited(nvertices + 1, false);
         cout << "DFS Traversal: ";
         dfsHelper(start, visited);
+        cout << endl;
+    }
+
+    // Breadth First Search
+
+    void bfs(int start) const
+    {
+        vector<bool> visited(nvertices + 1, false);
+        queue<int> q;
+
+        visited[start] = true;
+        q.push(start);
+
+        cout << "BFS Traversal: ";
+        while (!q.empty())
+        {
+            int v = q.front();
+            q.pop();
+            cout << v << " ";
+
+            EdgeNode *current = edges[v];
+            while (current != nullptr)
+            {
+                if (!visited[current->y])
+                {
+                    visited[current->y] = true;
+                    q.push(current->y);
+                }
+                current = current->next;
+            }
+        }
         cout << endl;
     }
 };
@@ -150,6 +182,7 @@ int main()
     g.printGraph();
 
     g.dfs(1); // Start DFS from vertex 1
+    g.bfs(1);
 
     return 0;
 }
