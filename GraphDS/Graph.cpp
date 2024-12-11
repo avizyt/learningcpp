@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 
 using namespace std;
 
@@ -135,54 +136,166 @@ struct Graph
 
     // Breadth First Search
 
-    void bfs(int start) const
-    {
-        vector<bool> visited(nvertices + 1, false);
-        queue<int> q;
+    // void bfs(int start) const
+    // {
+    //     vector<bool> visited(nvertices + 1, false);
+    //     queue<int> q;
 
-        visited[start] = true;
-        q.push(start);
+    //     visited[start] = true;
+    //     q.push(start);
 
-        cout << "BFS Traversal: ";
-        while (!q.empty())
-        {
-            int v = q.front();
-            q.pop();
-            cout << v << " ";
+    //     cout << "BFS Traversal: ";
+    //     while (!q.empty())
+    //     {
+    //         int v = q.front();
+    //         q.pop();
+    //         cout << v << " ";
 
-            EdgeNode *current = edges[v];
-            while (current != nullptr)
-            {
-                if (!visited[current->y])
-                {
-                    visited[current->y] = true;
-                    q.push(current->y);
-                }
-                current = current->next;
-            }
-        }
-        cout << endl;
-    }
+    //         EdgeNode *current = edges[v];
+    //         while (current != nullptr)
+    //         {
+    //             if (!visited[current->y])
+    //             {
+    //                 visited[current->y] = true;
+    //                 q.push(current->y);
+    //             }
+    //             current = current->next;
+    //         }
+    //     }
+    //     cout << endl;
+    // }
 };
+
+void dfsHelper(int v, vector<bool> &visited) const
+{
+    visited[v] = true;
+    cout << v << " ";
+
+    EdgeNode *current = edges[v];
+    while (current != nullptr)
+    {
+        if (!visited[current->y])
+        {
+            dfsHelper(current->y, visited);
+        }
+        current = current->next;
+    }
+}
+
+void dfs(int start) const
+{
+    vector<bool> visited(nvertices + 1, false);
+    cout << "DFS Traversal: ";
+    dfsHelper(start, visited);
+    cout << endl;
+}
+
+void dfsearch(Graph g, int start)
+{
+    vector<bool> visited(g.nvertices + 1, false);
+    stack<int> stk;
+
+    visited[start] = true;
+    stk.push(start);
+
+    cout << "DFS Traversal: ";
+    while (!stk.empty())
+    {
+        int v = stk.
+    }
+
+    EdgeNode *current = g.edges[start];
+    while (current != nullptr)
+    {
+    }
+}
+
+void bfsearch(Graph g, int start)
+{
+    vector<bool> visited(g.nvertices + 1, false);
+    queue<int> q;
+
+    visited[start] = true;
+    q.push(start);
+
+    cout << "BFS Traversal: ";
+    while (!q.empty())
+    {
+        int v = q.front();
+
+        q.pop();
+        cout << v << " ";
+
+        EdgeNode *current = g.edges[v];
+        while (current != nullptr)
+        {
+            if (!visited[current->y])
+            {
+                visited[current->y] = true;
+                q.push(current->y);
+            }
+            current = current->next;
+        }
+    }
+    cout << endl;
+}
+
+// void connectedComponent(Graph *g)
+// {
+//     vector<bool> visited(nvertices + 1, false);
+//     int componentCount = 0;
+//     cout << "Connected Component";
+//     for (int i = 1; i <= nvertices; i++)
+//     {
+//         if (!visited[i])
+//         {
+//             componentCount++;
+//             cout << "Component: " << componentCount;
+//             bfs(g, )
+//         }
+//     }
+// }
 
 int main()
 {
     int nvertices = 5; // Number of vertices
     Graph g(nvertices);
 
-    // Adding edges
+    // Graph 1
+    // g.insertEdge(1, 2);
+    // g.insertEdge(1, 3);
+    // g.insertEdge(2, 4, 10);
+    // g.insertEdge(3, 4, 20);
+    // g.insertEdge(4, 5);
+
+    // Graph 2
+    // g.insertEdge(1, 2);
+    // g.insertEdge(1, 3);
+    // g.insertEdge(2, 4);
+    // g.insertEdge(3, 4);
+    // g.insertEdge(3, 5);
+    // g.insertEdge(4, 6);
+    // g.insertEdge(4, 7);
+    // g.insertEdge(5, 8);
+    // g.insertEdge(5, 9);
+
+    // Graph 3
     g.insertEdge(1, 2);
-    g.insertEdge(1, 3);
-    g.insertEdge(2, 4, 10);
-    g.insertEdge(3, 4, 20);
-    g.insertEdge(4, 5);
+    g.insertEdge(1, 7);
+    g.insertEdge(1, 8);
+    g.insertEdge(2, 3);
+    g.insertEdge(2, 5);
+    g.insertEdge(3, 5);
+    g.insertEdge(3, 4);
+    g.insertEdge(5, 4);
+    g.insertEdge(5, 6);
 
     // Printing the graph
     std::cout << "Graph representation:" << std::endl;
     g.printGraph();
 
     g.dfs(1); // Start DFS from vertex 1
-    g.bfs(1);
+    bfsearch(g, 1);
 
     return 0;
 }

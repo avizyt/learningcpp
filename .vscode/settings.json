@@ -61,7 +61,8 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "unordered_set": "cpp",
-        "numeric": "cpp"
+        "numeric": "cpp",
+        "queue": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "code-runner.executorMap": {
