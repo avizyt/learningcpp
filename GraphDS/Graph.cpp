@@ -166,48 +166,33 @@ struct Graph
     // }
 };
 
-void dfsHelper(int v, vector<bool> &visited) const
-{
-    visited[v] = true;
-    cout << v << " ";
-
-    EdgeNode *current = edges[v];
-    while (current != nullptr)
-    {
-        if (!visited[current->y])
-        {
-            dfsHelper(current->y, visited);
-        }
-        current = current->next;
-    }
-}
-
-void dfs(int start) const
-{
-    vector<bool> visited(nvertices + 1, false);
-    cout << "DFS Traversal: ";
-    dfsHelper(start, visited);
-    cout << endl;
-}
-
 void dfsearch(Graph g, int start)
 {
     vector<bool> visited(g.nvertices + 1, false);
-    stack<int> stk;
+    vector<int> stk;
 
     visited[start] = true;
-    stk.push(start);
+    stk.push_back(start);
 
     cout << "DFS Traversal: ";
     while (!stk.empty())
     {
-        int v = stk.
-    }
+        int v = stk.back();
+        stk.pop_back();
+        cout << v << " ";
 
-    EdgeNode *current = g.edges[start];
-    while (current != nullptr)
-    {
+        EdgeNode *current = g.edges[v];
+        while (current != nullptr)
+        {
+            if (!visited[current->y])
+            {
+                visited[current->y] = true;
+                stk.push_back(current->y);
+            }
+            current = current->next;
+        }
     }
+    cout << endl;
 }
 
 void bfsearch(Graph g, int start)
@@ -240,21 +225,46 @@ void bfsearch(Graph g, int start)
     cout << endl;
 }
 
-// void connectedComponent(Graph *g)
-// {
-//     vector<bool> visited(nvertices + 1, false);
-//     int componentCount = 0;
-//     cout << "Connected Component";
-//     for (int i = 1; i <= nvertices; i++)
-//     {
-//         if (!visited[i])
-//         {
-//             componentCount++;
-//             cout << "Component: " << componentCount;
-//             bfs(g, )
-//         }
-//     }
-// }
+void bfsHelper(Graph g, int start, vector<bool> &visited)
+{
+    vector<int> queue; // Queue for BFS
+    visited[start] = true;
+    queue.push_back(start);
+
+    while (!queue.empty())
+    {
+        int v = queue.front();
+        queue.erase(queue.begin());
+        cout << v << " "; // Print the node
+
+        EdgeNode *current = g.edges[v];
+        while (current != nullptr)
+        {
+            if (!visited[current->y])
+            {
+                visited[current->y] = true;
+                queue.push_back(current->y);
+            }
+            current = current->next;
+        }
+    }
+}
+void connectedComponent(Graph g)
+{
+    vector<bool> visited(g.nvertices + 1, false);
+    int componentCount = 0;
+    cout << "Connected Component";
+    for (int i = 1; i <= g.nvertices; i++)
+    {
+        if (!visited[i])
+        {
+            componentCount++;
+            cout << "Component: " << componentCount;
+            bfsHelper(g, i, visited);
+            cout << endl;
+        }
+    }
+}
 
 int main()
 {
@@ -294,8 +304,9 @@ int main()
     std::cout << "Graph representation:" << std::endl;
     g.printGraph();
 
-    g.dfs(1); // Start DFS from vertex 1
+    dfsearch(g, 1); // Start DFS from vertex 1
     bfsearch(g, 1);
+    connectedComponent(g);
 
     return 0;
 }

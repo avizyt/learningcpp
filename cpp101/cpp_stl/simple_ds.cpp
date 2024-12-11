@@ -15,9 +15,9 @@ int main()
     s.push(arr[0]);
     s.push(arr[1]);
     s.push(arr[2]);
+    cout << s.size() << endl;
 
-    while (!arr.empty())
-    {
-        cout << arr.front() << endl;
-    }
+    // cout << s.pop() << " ";
+    // cout << s.pop() << " ";
+    // cout << s.pop() << " ";s
 }
