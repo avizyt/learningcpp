@@ -100,71 +100,15 @@ struct Graph
             std::cout << std::endl;
         }
     }
-
-    /* Graph Traversal Algorithms
-
-    1. Depth First Search : Use Stack or Recursion
-        - For Finding Path
-    2. Breadth First Search : Use Queue
-        - For Shortest Path
-    */
-
-    // DFS
-    void dfsHelper(int v, vector<bool> &visited) const
-    {
-        visited[v] = true;
-        cout << v << " ";
-
-        EdgeNode *current = edges[v];
-        while (current != nullptr)
-        {
-            if (!visited[current->y])
-            {
-                dfsHelper(current->y, visited);
-            }
-            current = current->next;
-        }
-    }
-
-    void dfs(int start) const
-    {
-        vector<bool> visited(nvertices + 1, false);
-        cout << "DFS Traversal: ";
-        dfsHelper(start, visited);
-        cout << endl;
-    }
-
-    // Breadth First Search
-
-    // void bfs(int start) const
-    // {
-    //     vector<bool> visited(nvertices + 1, false);
-    //     queue<int> q;
-
-    //     visited[start] = true;
-    //     q.push(start);
-
-    //     cout << "BFS Traversal: ";
-    //     while (!q.empty())
-    //     {
-    //         int v = q.front();
-    //         q.pop();
-    //         cout << v << " ";
-
-    //         EdgeNode *current = edges[v];
-    //         while (current != nullptr)
-    //         {
-    //             if (!visited[current->y])
-    //             {
-    //                 visited[current->y] = true;
-    //                 q.push(current->y);
-    //             }
-    //             current = current->next;
-    //         }
-    //     }
-    //     cout << endl;
-    // }
 };
+
+/* Graph Traversal Algorithms
+
+1. Depth First Search : Use Stack or Recursion
+    - For Finding Path
+2. Breadth First Search : Use Queue
+    - For Shortest Path
+*/
 
 void dfsearch(Graph g, int start)
 {
@@ -249,7 +193,7 @@ void bfsHelper(Graph g, int start, vector<bool> &visited)
         }
     }
 }
-void connectedComponent(Graph g)
+void findConnectedComponent(Graph g)
 {
     vector<bool> visited(g.nvertices + 1, false);
     int componentCount = 0;
@@ -268,7 +212,7 @@ void connectedComponent(Graph g)
 
 int main()
 {
-    int nvertices = 5; // Number of vertices
+    int nvertices = 8; // Number of vertices
     Graph g(nvertices);
 
     // Graph 1
@@ -306,7 +250,7 @@ int main()
 
     dfsearch(g, 1); // Start DFS from vertex 1
     bfsearch(g, 1);
-    connectedComponent(g);
+    findConnectedComponent(g);
 
     return 0;
 }
