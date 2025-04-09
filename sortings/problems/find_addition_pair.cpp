@@ -29,9 +29,9 @@ bool findAddPair(int num, vector<int> &arr1, vector<int> &arr2)
     return false;
 }
 
-bool findAddPairOptimized(int num, std::vector<int> &arr1, std::vector<int> &arr2)
+bool findAddPairOptimized(int num, vector<int> &arr1, vector<int> &arr2)
 {
-    std::unordered_set<int> hashSet(arr2.begin(), arr2.end());
+    unordered_set<int> hashSet(arr2.begin(), arr2.end());
 
     for (int x : arr1)
     {
@@ -49,7 +49,7 @@ int main()
 {
     int number = 10;
     vector<int> arr1 = {1, 2, 3, 4, 5};
-    vector<int> arr2 = {2, 6, 1, 8, 4};
+    vector<int> arr2 = {2, 6, 1, 8, 4, 7};
     cout << findAddPair(number, arr1, arr2) << endl;
     cout << findAddPairOptimized(number, arr1, arr2) << endl;
 }
