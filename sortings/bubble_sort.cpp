@@ -6,21 +6,23 @@ using namespace std;
 // bubble sort
 void bubbleSort(vector<int> &arr)
 {
-    int n = arr.size();
+    int n = arr.size() - 1;
 
-    for (int i = 0; i < n - 1; i++)
+    int numberOfInversion = 0;
+    for (int i = 0; i < n; i++)
     {
         // flag to optimize if no swaps occur
         bool swapped = false;
 
         // compare adjacent elements
-        for (int j = 0; j < n - i - 1; j++)
+        for (int j = 0; j < n - i; j++)
         {
             if (arr[j] > arr[j + 1])
             {
                 // swap if element are in the wrong order
                 swap(arr[j], arr[j + 1]);
                 swapped = true;
+                numberOfInversion += 1;
             }
         }
 
@@ -28,6 +30,7 @@ void bubbleSort(vector<int> &arr)
         if (!swapped)
             break;
     }
+    cout << "Number of inversion: " << numberOfInversion << "\n";
 }
 
 // utility function to print the array
