@@ -24,7 +24,7 @@ int main()
     // }
 
     // return 0;
-    // weighted graph representation
+    // non-weighted graph representation
 
     vector<pair<int, int>> adjw[N];
     adjw[1].push_back({2, 5});

@@ -63,7 +63,8 @@
         "unordered_set": "cpp",
         "numeric": "cpp",
         "queue": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "deque": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
     "code-runner.executorMap": {
