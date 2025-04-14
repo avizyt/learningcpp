@@ -137,4 +137,15 @@ if (userPerm & EXEC) { /* ... */ }
 
 ---
 
-Would you like me to create a **Bitwise Operations Cheatsheet**, or walk you through one of the trickier use cases like **subset DP**, **bitmask BFS**, or a **coding challenge** next?
+::NOTE::
+
+1. A number of the form 1<<k has a one bit in position k and all other bits are zero.
+2. The kth bit od a number is one ezxatlu when x&(1<<k) is not zero.
+
+It is possible to modify single bits of numbers using similar ideas.
+- The formula x | (1<<k) sets the kth bit of x to one.
+- The formular x & ~(1<<k) sets the kth bit f a zero.
+- The formula x^(1<<k) inverts the kth bit of x.
+- The formula x&(x-1) sets the last one bit of x to zero.
+- The formula x& (-x) sets all the one bits to zero., except for the last one bit.
+- The formula x | (x-1) inverts all the bits after the last one bit
