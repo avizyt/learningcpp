@@ -7,6 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-std=c++23",
+                "-Iinclude",
                 "-g",
                 "${file}",
                 "-o",
