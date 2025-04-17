@@ -5,19 +5,23 @@
 
 using namespace std;
 
-int main() {
-  vector<int> arr;
-
-  for(int i=0; i<= 10; i++){
-    arr.push_back(i*2);
+int main()
+{
+  int V = 5;
+  vector<int> arr(V);
+  vector<bool> barr(V, false);
+  int i = 1;
+  for (bool item : barr)
+  {
+    if (!item == true)
+    {
+      arr.push_back(V * i);
+      i++;
+    }
   }
-  for(int item: arr){
-  cout << item << endl;
-  }
 
-  for(int x: arr){
-    cout << x*2 <<endl;
+  for (int val : arr)
+  {
+    cout << val << " ";
   }
-
-  sort(arr.begin(), arr.end());
 }
