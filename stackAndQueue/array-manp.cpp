@@ -2,6 +2,8 @@
 
 using namespace std;
 
+using mat = vector<vector<int>>;
+
 int main()
 {
     stack<vector<int>> st;
