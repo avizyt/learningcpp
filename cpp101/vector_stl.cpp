@@ -1,27 +1,17 @@
 
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
-  int V = 5;
-  vector<int> arr(V);
-  vector<bool> barr(V, false);
-  int i = 1;
-  for (bool item : barr)
+  ios::sync_with_stdio(false);
+  cin.tie(0);
+  cout.tie(0);
+  vector<int> arr = {1, 2, 3, 4, 5};
+  for (int i = arr.size() - 1; i >= 0; i--)
   {
-    if (!item == true)
-    {
-      arr.push_back(V * i);
-      i++;
-    }
+    std::cout << arr.at(i) * 2 << std::endl;
   }
 
-  for (int val : arr)
-  {
-    cout << val << " ";
-  }
+  return 0;
 }
